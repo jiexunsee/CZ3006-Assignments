@@ -1,6 +1,6 @@
-# CZ3006-Assignment-2
+# CZ3006 Assignment 2: HTML, JavaScript, PHP
 
-### Using XAMPP:
+### Using XAMPP in windows:
 * Open XAMPP Control Panel
 * Start Apache
 * Put .php file into `:C/xampp/htdocs`
