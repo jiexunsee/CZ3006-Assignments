@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Friendly Fruit Stall</title>
+	<script type="text/javascript">
+		<!--
+		function setTotal(element) {
+			apples = document.getElementById("apples"); // using element ID to get reference to the element
+			oranges = document.getElementById("oranges");
+			bananas = document.getElementById("bananas");
+			numApples = processNumber(apples.value);
+			numOranges = processNumber(oranges.value);
+			numBananas = processNumber(bananas.value);
+
+			if (!isNaN(numApples) && !isNaN(numOranges) && !isNaN(numBananas)) {
+				price = numApples*0.69 + numOranges*0.59 + numBananas*0.39;
+				total = document.getElementById("total");
+				total.value = "$ " + parseFloat(price).toFixed(2); // setting the total price to have two decimal places
+			}
+			else {
+				total = document.getElementById("total");
+				total.value = "NaN";
+			}
+
+			newValue = element.value;
+			if (isNaN(newValue) || (newValue < 0)) alert("Please enter a valid quantity.") // Generating alert if input is NaN or negative
+		}
+
+		function processNumber(number) { // returns the input as an integer, or else returns "NaN" if input isn't an integer
+			if (number == "") return 0
+			else if (/^\d+$/.test(number)) return parseInt(number)
+			else return 'NaN'
+		}
+
+		function nameValidate() {
+			nameDoc = document.getElementById("name");
+			if (nameDoc.value == "") {
+				alert("Please enter your name.");
+				return false;
+			}
+			return true;
+		}
+
+		function totalValidate() {
+			total = document.getElementById("total");
+			price = total.value;
+			if (isNaN(price.substring(2))) {
+				alert("Please enter a valid order.");
+				return false;
+			}
+			else if (price == 0) {
+				alert("Please choose at least one item."); // require the user to order at least one item
+				return false;
+			}
+			return true;
+		}
+
+		function checkForm() {
+			if (nameValidate() && totalValidate()) return true;
+			else return false;
+		}
+		-->
+	</script>
+</head>
+<body>
+	<form onsubmit="return checkForm()" method="post" action="http://localhost/receipt.php">
+		<h3> Fruit Order Form </h3>
+		<p>
+			Name:
+			<input type="text" placeholder="e.g. John Calvin" id="name" name="name"/> 
+		</p>
+
+		<!-- A table for item orders -->
+		<table border = "0">
+
+		<!-- Column headings --> 
+			<tr>
+				<th width="80"> Fruit </th>
+				<th> Price </th>
+				<th width="80"> Quantity </th>
+			</tr>
+
+		<!-- Now, the table data entries -->
+			<tr>
+				<td align="center"> Apples </td>
+				<td> $ 0.69 </td>
+				<td align="center"> <input type="text" id="apples" name="apples" size="2" onchange="setTotal(this)" /> </td> 
+			</tr>
+			<tr>
+				<td align="center"> Oranges </td>
+				<td> $ 0.59 </td>
+				<td align="center"> <input type="text" id="oranges" name="oranges" size="2" onchange="setTotal(this)" /> </td>
+			</tr> 
+			<tr>
+				<td align="center"> Bananas </td>
+				<td> $ 0.39 </td>
+				<td align="center"> <input type="textbox" id="bananas" name="bananas" size="2" onchange="setTotal(this)" /></td>
+			</tr>
+			<tr height="50">
+				<th> Total cost </th>
+				<th colspan="2">
+					<input type="textbox" size="7" onfocus="this.blur()" id="total" name="total" placeholder="0"/> <!-- blurred because it isn't for user input -->
+				</th>
+			</tr>
+		</table>
+		<br/>
+
+		<!-- A table for payment methods -->
+		<table>
+			<tr>
+				<th>Payment Methods:</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="payment" id="payment" value="Visa" checked/> Visa	
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="payment" id="payment" value="MasterCard" /> MasterCard
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="payment" id="payment" value="Discover" /> Discover
+				</td>
+			</tr>
+		</table>
+
+		<!-- The submit and reset buttons -->
+		<p>
+			<input type="submit" value="Submit Order" />
+			<input type="reset" value="Clear Order Form" />
+		</p>
+	</form>
+</body>
+</html>
